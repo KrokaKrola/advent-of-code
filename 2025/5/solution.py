@@ -1,7 +1,7 @@
 import os
 
 script_dir = os.path.dirname(__file__)
-file_name = "input.txt"
+file_name = "input-test.txt"
 absolute_file_path = os.path.join(script_dir, file_name)
 
 ranges: list[list[int]] = []
