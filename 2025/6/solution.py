@@ -30,42 +30,6 @@ def solution_1():
 
 
 def solution_2():
-    total = 0
-
-    for col in data:
-        numbers = []
-        operator = col[-1]
-
-        largest_num_length = 0
-
-        for itm in col[:-1]:
-            if len(itm) > largest_num_length:
-                largest_num_length = len(itm)
-
-        for idx in range(0, largest_num_length):
-            number_candidate = ""
-            for el in col[:-1]:
-                len_diff = largest_num_length - len(el)
-                if len_diff > 0:
-                    el = ("_" * len_diff) + el
-
-                # needs proper idx calculation based on the number length
-                number_candidate += el[idx]
-            numbers.append(number_candidate.replace("_", ""))
-
-        numbers = [int(n) for n in numbers]
-
-        if operator == "+":
-            total += sum(numbers)
-        elif operator == "*":
-            total += math.prod(numbers)
-
-        print("total", total, "for", numbers)
-
-    print(total)
-
-
-def solution_2_1():
     with open(absolute_file_path) as f:
         lines = f.read().splitlines()
 
@@ -91,10 +55,12 @@ def solution_2_1():
             operator = "+"
             sub_total = 0
 
+        number = int("".join(list(col[:-1])))
+
         if operator == "+":
-            sub_total += int("".join(list(col[:-1])))
+            sub_total += number
         elif operator == "*":
-            sub_total *= int("".join(list(col[:-1])))
+            sub_total *= number
 
     total += sub_total
 
@@ -102,5 +68,4 @@ def solution_2_1():
 
 
 # solution_1()
-# solution_2()
-solution_2_1()
+solution_2()
