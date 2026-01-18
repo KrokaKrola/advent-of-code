@@ -14,12 +14,32 @@ def parse_input(file_path: str):
 
 def solve_part1(data: list[str]) -> int:
     ans = 0
+
+    for el in data[0]:
+        if el == "(":
+            ans += 1
+        else:
+            ans -= 1
+
     return ans
 
 
 def solve_part2(data: list[str]) -> int:
     ans = 0
-    return ans
+    k = 0
+
+    for el in data[0]:
+        if el == "(":
+            ans += 1
+        else:
+            ans -= 1
+
+        k += 1
+
+        if ans == -1:
+            break
+
+    return k
 
 
 if __name__ == "__main__":
